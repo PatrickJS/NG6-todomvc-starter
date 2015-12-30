@@ -1,11 +1,13 @@
 import angular from 'angular';
 import 'angular-component';
 import Components from './components/components';
-import AppComponent from './app.component';
+import services from './services/services';
 import 'normalize.css';
 
-angular.module('app', [
-  Components.name
-])
+import AppComponent from './app.component';
 
+angular.module('app', [
+  Components.name,
+  services.name
+])
 .component('app', AppComponent);

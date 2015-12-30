@@ -1,57 +1,78 @@
 import cuid from 'cuid';
-import 'core-js/modules/es6.array.find';
+//import 'core-js/modules/es6.array.find';
 
 export default class TodoManager {
 
   constructor() {
-    this.list = this.todos =  [];
+    this.filterState = 'all';
+    this.todos = this.list = [];
     this.showCompleted = undefined;
   }
 
   add(description) {
-    var id = cuid();
+    const task = new Task(description);
+    this.todos.push(task);
+    this.$refreshList();
 
-    this.todos.push({
-      id,
-      description,
-      isCompleted: false
+    return task;
+  }
+
+  toggleAll() {
+    const complete = this.notCompletedCount() !== 0;
+    this.todos = this.todos.map((task) => {
+      task.complete = !!complete;
+
+      return task;
     });
 
-    return id;
+    this.$refreshList();
   }
 
-  toggleDone(itemID, isCompleted) {
-    var item = this.todos.find((item) => item.id === itemID);
-    if (!item) {
-      throw new Error('No todo find!');
-    }
-
-    item.isCompleted = undefined === isCompleted ?
-      !item.isCompleted : !!isCompleted
+  notCompletedCount() {
+    return this.todos.filter((item) => !item.complete).length;
   }
 
-  updateDescription(itemID, description) {
-    item.description = description;
+  completedCount() {
+    return this.todos.filter((item) => item.complete).length;
   }
 
-  countLeftTodos() {
-    return this.todos.filter((item) => !item.isCompleted).length;
-  }
-
-  remove(itemID) {
-    this.todos = this.todos.filter((todo) => todo.id !== itemID);
+  remove(item) {
+    this.todos = this.todos.filter((todo) => todo !== item);
+    this.$refreshList();
   }
 
   clearCompleted() {
-    this.todos = this.todos.filter((todo) => !todo.isCompleted);
+    this.todos = this.todos.filter((todo) => !todo.complete);
+    this.$refreshList();
   }
 
-  filterTodos(showCompleted) {
-    this.showCompleted = showCompleted;
-    const showAll = (undefined === showCompleted);
+  filter(filterState) {
+    this.filterState = filterState;
+    const showAll = ('all' === filterState);
+    const showCompleted = 'completed' === filterState;
 
-    this.list = this.todos.filter((item) => (showAll || showCompleted === item.isCompleted))
+    this.list = this.todos.filter((item) => (showAll || showCompleted === item.complete));
   }
 
+  $refreshList() {
+    this.filter(this.filterState);
+  }
+
+}
+
+class Task {
+  constructor(description) {
+    this.id = cuid();
+    this.description = description;
+    this.isCompleted = false;
+  }
+
+  get complete() {
+    return this.isCompleted;
+  }
+
+  set complete(val) {
+    this.isCompleted = !!val;
+  }
 }
 

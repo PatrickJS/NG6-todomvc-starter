@@ -8,46 +8,50 @@ describe('TodoManager service', () => {
     manager = new TodoManager();
   });
 
-  describe('List filtering', () => {
+  describe('Filtering', () => {
 
     beforeEach(() => {
       const first = manager.add('test 1');
-      manager.toggleDone(first, true);
+      first.complete = true;
       manager.add('test 2');
     });
 
     it('can show all tasks', () => {
-      manager.filterTodos(true);
-      expect(manager.list.length).to.have.length.eq(1);
+      manager.filter('all');
+      expect(manager.list.length).to.have.length.eq(2);
     });
 
     it('can show pending tasks', () => {
-      manager.filterTodos(false);
+      manager.filter('pending');
       expect(manager.list.length).to.have.length.eq(1);
     });
 
-    it('can show done tasks', () => {
-      manager.filterTodos(true);
+    it('can show completed tasks', () => {
+      manager.filter('completed');
       expect(manager.list.length).to.have.length.eq(1);
     });
 
   });
 
   describe('Stats', () => {
-    let firstItemID;
+    let first;
 
     beforeEach(() => {
-      firstItemID = manager.add('test 1');
+      first = manager.add('test 1');
     });
 
     it('can show number of remaining tasks', () => {
-      expect(manager.countLeftTodos()).to.eq(1);
+      expect(manager.notCompletedCount()).to.eq(1);
     });
 
     it('shows zero if there is no pending tasks', () => {
-      manager.toggleDone(firstItemID);
-      expect(manager.countLeftTodos()).to.eq(0);
+      first.complete = true;
+      expect(manager.notCompletedCount()).to.eq(0);
     });
+  });
+
+  describe('Toggle', () => {
+
   });
 
 });
