@@ -16,13 +16,13 @@ webpackJsonp([0],[
 	
 	var _componentsComponents2 = _interopRequireDefault(_componentsComponents);
 	
-	var _servicesServices = __webpack_require__(18);
+	var _servicesServices = __webpack_require__(19);
 	
 	var _servicesServices2 = _interopRequireDefault(_servicesServices);
 	
-	__webpack_require__(21);
+	__webpack_require__(22);
 	
-	var _appComponent = __webpack_require__(23);
+	var _appComponent = __webpack_require__(24);
 	
 	var _appComponent2 = _interopRequireDefault(_appComponent);
 	
@@ -58,23 +58,27 @@ webpackJsonp([0],[
 	
 	var _todoTextInputTodoTextInput2 = _interopRequireDefault(_todoTextInputTodoTextInput);
 	
-	var _todoHeaderComponent = __webpack_require__(14);
-	
-	var _todoHeaderComponent2 = _interopRequireDefault(_todoHeaderComponent);
-	
-	var _todoListComponent = __webpack_require__(15);
+	var _todoListComponent = __webpack_require__(14);
 	
 	var _todoListComponent2 = _interopRequireDefault(_todoListComponent);
 	
-	var _todoItemComponent = __webpack_require__(16);
+	var _todoItemComponent = __webpack_require__(15);
 	
 	var _todoItemComponent2 = _interopRequireDefault(_todoItemComponent);
 	
-	var _todoFooterComponent = __webpack_require__(17);
+	var _todoFooterComponent = __webpack_require__(16);
 	
 	var _todoFooterComponent2 = _interopRequireDefault(_todoFooterComponent);
 	
-	exports['default'] = _angular2['default'].module('app.components', [_todoTextInputTodoTextInput2['default'].name]).component('todoHeader', _todoHeaderComponent2['default']).component('todoList', _todoListComponent2['default']).component('todoItem', _todoItemComponent2['default']).component('todoFooter', _todoFooterComponent2['default']);
+	var _todoBatchToggleComponent = __webpack_require__(17);
+	
+	var _todoBatchToggleComponent2 = _interopRequireDefault(_todoBatchToggleComponent);
+	
+	var _todoListFilterComponent = __webpack_require__(18);
+	
+	var _todoListFilterComponent2 = _interopRequireDefault(_todoListFilterComponent);
+	
+	exports['default'] = _angular2['default'].module('app.components', [_todoTextInputTodoTextInput2['default'].name]).component('todoList', _todoListComponent2['default']).component('todoItem', _todoItemComponent2['default']).component('todoFooter', _todoFooterComponent2['default']).component('todoBatchToggle', _todoBatchToggleComponent2['default']).component('todoListFilter', _todoListFilterComponent2['default']);
 	module.exports = exports['default'];
 
 /***/ },
@@ -540,101 +544,21 @@ webpackJsonp([0],[
 /* 14 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
+	Object.defineProperty(exports, '__esModule', {
 	  value: true
 	});
-	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	var TodoHeaderController = (function () {
-	  function TodoHeaderController() {
-	    "ngInject";
-	
-	    _classCallCheck(this, TodoHeaderController);
-	  }
-	
-	  _createClass(TodoHeaderController, [{
-	    key: "onSave",
-	    value: function onSave(task) {
-	      if (!task) {
-	        return;
-	      }
-	
-	      this.todos.add(task);
-	    }
-	  }]);
-	
-	  return TodoHeaderController;
-	})();
-	
-	exports["default"] = {
+	exports['default'] = {
 	  bindings: {
 	    todos: '='
 	  },
-	  template: "\n    <section class=\"header\">\n      <h1>todos</h1>\n      <header class=\"header-input\">\n        <todo-text-input\n          placeholder=\"What needs to get done?\"\n          on-save=\"todoHeader.onSave(task)\">\n        </todo-text-input>\n      </header>\n    </section>\n  ",
-	  controller: TodoHeaderController
+	  template: '\n    <ul class="todo-list">\n      <todo-item todo="todo" ng-repeat="todo in todoList.todos"></todo-item>\n    </ul>\n  '
 	};
-	module.exports = exports["default"];
+	module.exports = exports['default'];
 
 /***/ },
 /* 15 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	var TodoListController = (function () {
-	  TodoListController.$inject = ["todoManager"];
-	  function TodoListController(todoManager) {
-	    "ngInject";
-	
-	    _classCallCheck(this, TodoListController);
-	
-	    this.manager = todoManager;
-	  }
-	
-	  _createClass(TodoListController, [{
-	    key: "toggleCompleteAll",
-	
-	    // do nothing?
-	    value: function toggleCompleteAll() {
-	      this.manager.toggleAll();
-	    }
-	  }, {
-	    key: "allChecked",
-	    get: function get() {
-	      return this.todos.todos.reduce(function (result, task) {
-	        return result && task.complete;
-	      }, true);
-	    },
-	    set: function set(val) {}
-	  }]);
-	
-	  return TodoListController;
-	})();
-	
-	exports["default"] = {
-	  bindings: {
-	    todos: '='
-	  },
-	  template: "\n     <section class=\"main\">\n      <input class=\"toggle-all\"\n             type=\"checkbox\"\n             ng-model=\"todoList.allChecked\"\n             ng-model-options=\"{getterSetter: true}\"\n             ng-change=\"todoList.toggleCompleteAll()\"\n             ng-show=\"todoList.todos.list.length\" />\n      <label for=\"toggle-all\">Mark all as complete</label>\n      <ul class=\"todo-list\">\n        <todo-item todo=\"todo\" ng-repeat=\"todo in todoList.todos.list\"></todo-item>\n      </ul>\n    </section>\n  ",
-	  controller: TodoListController
-	};
-	module.exports = exports["default"];
-
-/***/ },
-/* 16 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -673,6 +597,19 @@ webpackJsonp([0],[
 	
 	      this.isEditing = false;
 	    }
+	  }, {
+	    key: "toggleStatus",
+	    value: function toggleStatus() {
+	      this.manager.toggleStatus(this.task);
+	    }
+	  }, {
+	    key: "complete",
+	    get: function get() {
+	      return this.task.complete;
+	    },
+	    set: function set(val) {
+	      // do nothing
+	    }
 	  }]);
 	
 	  return TodoItemController;
@@ -682,13 +619,13 @@ webpackJsonp([0],[
 	  bindings: {
 	    task: '=todo'
 	  },
-	  template: "\n    <li ng-class=\"{'completed': todoItem.task.complete, 'editing': todoItem.isEditing}\">\n      <div class=\"view\" ng-show=\"!todoItem.isEditing\">\n        <input\n          class=\"toggle\"\n          type=\"checkbox\"\n          ng-model=\"todoItem.task.complete\"\n          ng-model-options=\"{getterSetter: true}\">\n        </input>\n        <label ng-dblclick=\"todoItem.isEditing = true\" class=\"todo-text\" >{{todoItem.task.description}}</label>\n        <button class=\"destroy\" ng-click=\"todoItem.onDestroyClick()\"></button>\n      </div>\n      <div class=\"edit-container\" ng-if=\"todoItem.isEditing\">\n        <todo-text-input\n          class=\"edit\"\n          on-save=\"todoItem.onSave(task)\"\n          value=\"{{todoItem.task.description}}\">\n        </todo-text-input>\n      </div>\n    </li>\n  ",
+	  template: "\n    <li ng-class=\"{'completed': todoItem.task.complete, 'editing': todoItem.isEditing}\">\n      <div class=\"view\" ng-show=\"!todoItem.isEditing\">\n        <input\n          class=\"toggle\"\n          type=\"checkbox\"\n          ng-model=\"todoItem.complete\"\n          ng-model-options=\"{getterSetter: true}\"\n          ng-change=\"todoItem.toggleStatus()\" />\n        </input>\n        <label ng-dblclick=\"todoItem.isEditing = true\" class=\"todo-text\" >{{todoItem.task.description}}</label>\n        <button class=\"destroy\" ng-click=\"todoItem.onDestroyClick()\"></button>\n      </div>\n      <div class=\"edit-container\" ng-if=\"todoItem.isEditing\">\n        <todo-text-input\n          class=\"edit\"\n          on-save=\"todoItem.onSave(task)\"\n          value=\"{{todoItem.task.description}}\">\n        </todo-text-input>\n      </div>\n    </li>\n  ",
 	  controller: TodoItemController
 	};
 	module.exports = exports["default"];
 
 /***/ },
-/* 17 */
+/* 16 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -730,13 +667,96 @@ webpackJsonp([0],[
 	
 	exports["default"] = {
 	  bindings: {},
-	  template: "\n    <footer class=\"footer\">\n      <span class=\"todo-count\">\n        {{todoFooter.todos.notCompletedCount()}} {{todoFooter.todos.notCompletedCount() == 1 ? 'todo' : 'todos'}} left\n      </span>\n      <ul class=\"filters\">\n        <li><a href ng-class=\"{selected: todoFooter.filterState == 'all'}\" ng-click=\"todoFooter.filter('all')\">All</a></li>\n        <li><a href ng-class=\"{selected: todoFooter.filterState == 'active'}\" ng-click=\"todoFooter.filter('active')\">Active</a></li>\n        <li><a href ng-class=\"{selected: todoFooter.filterState == 'completed'}\" ng-click=\"todoFooter.filter('completed')\">Completed</a></li>\n      </ul>\n      <button\n        class=\"clear-completed\"\n        ng-click=\"todoFooter.clearCompleted()\"\n        ng-show=\"todoFooter.todos.completedCount() >= 1\">\n        Clear Completed ({{ todoFooter.todos.completedCount() }})\n      </button>\n    </footer>\n  ",
+	  template: "\n    <footer class=\"footer\">\n      <span class=\"todo-count\">\n        {{todoFooter.todos.notCompletedCount()}} {{todoFooter.todos.notCompletedCount() == 1 ? 'todo' : 'todos'}} left\n      </span>\n      <ng-transclude></ng-transclude>\n      <button\n        class=\"clear-completed\"\n        ng-click=\"todoFooter.clearCompleted()\"\n        ng-show=\"todoFooter.todos.completedCount() >= 1\">\n        Clear Completed ({{ todoFooter.todos.completedCount() }})\n      </button>\n    </footer>\n  ",
 	  controller: TodoFooterController
 	};
 	module.exports = exports["default"];
 
 /***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	
+	var BatchTogglerController = (function () {
+	  function BatchTogglerController() {
+	    _classCallCheck(this, BatchTogglerController);
+	  }
+	
+	  _createClass(BatchTogglerController, [{
+	    key: 'allChecked',
+	    get: function get() {
+	      return this.todos.reduce(function (result, task) {
+	        return result && task.complete;
+	      }, true);
+	    },
+	    set: function set(val) {
+	      // do nothing?
+	    }
+	  }]);
+	
+	  return BatchTogglerController;
+	})();
+	
+	exports['default'] = {
+	  bindings: {
+	    onToggle: '&',
+	    todos: '='
+	  },
+	  template: '\n    <input class="toggle-all"\n           type="checkbox"\n           ng-model="todoBatchToggle.allChecked"\n           ng-model-options="{getterSetter: true}"\n           ng-change="todoBatchToggle.onToggle()" />\n    <label for="toggle-all">Mark all as complete</label>\n  ',
+	  controller: BatchTogglerController
+	};
+	module.exports = exports['default'];
+
+/***/ },
 /* 18 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	
+	var TodoListFilter = (function () {
+	  function TodoListFilter() {
+	    _classCallCheck(this, TodoListFilter);
+	  }
+	
+	  _createClass(TodoListFilter, [{
+	    key: 'filter',
+	    value: function filter(state) {
+	      this.onFilter({ state: state });
+	    }
+	  }]);
+	
+	  return TodoListFilter;
+	})();
+	
+	exports['default'] = {
+	  bindings: {
+	    onFilter: '&',
+	    filterState: '='
+	  },
+	  template: '\n    <ul class="filters">\n      <li><a href ng-class="{selected: todoListFilter.filterState == \'all\'}" ng-click="todoListFilter.filter(\'all\')">All</a></li>\n      <li><a href ng-class="{selected: todoListFilter.filterState == \'active\'}" ng-click="todoListFilter.filter(\'active\')">Active</a></li>\n      <li><a href ng-class="{selected: todoListFilter.filterState == \'completed\'}" ng-click="todoListFilter.filter(\'completed\')">Completed</a></li>\n    </ul>\n  ',
+	  controller: TodoListFilter
+	};
+	module.exports = exports['default'];
+
+/***/ },
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -751,7 +771,7 @@ webpackJsonp([0],[
 	
 	var _angular2 = _interopRequireDefault(_angular);
 	
-	var _todoManager = __webpack_require__(19);
+	var _todoManager = __webpack_require__(20);
 	
 	var _todoManager2 = _interopRequireDefault(_todoManager);
 	
@@ -761,7 +781,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -776,7 +796,7 @@ webpackJsonp([0],[
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var _cuid = __webpack_require__(20);
+	var _cuid = __webpack_require__(21);
 	
 	var _cuid2 = _interopRequireDefault(_cuid);
 	
@@ -787,7 +807,7 @@ webpackJsonp([0],[
 	    _classCallCheck(this, TodoManager);
 	
 	    this.filterState = 'all';
-	    this.todos = this.list = [];
+	    this.filteredList = this.list = [];
 	    this.showCompleted = undefined;
 	  }
 	
@@ -795,7 +815,7 @@ webpackJsonp([0],[
 	    key: 'add',
 	    value: function add(description) {
 	      var task = new Task(description);
-	      this.todos.push(task);
+	      this.list.push(task);
 	      this.$refreshList();
 	
 	      return task;
@@ -804,7 +824,7 @@ webpackJsonp([0],[
 	    key: 'toggleAll',
 	    value: function toggleAll() {
 	      var complete = this.notCompletedCount() !== 0;
-	      this.todos = this.todos.map(function (task) {
+	      this.list = this.list.map(function (task) {
 	        task.complete = !!complete;
 	
 	        return task;
@@ -813,23 +833,29 @@ webpackJsonp([0],[
 	      this.$refreshList();
 	    }
 	  }, {
+	    key: 'toggleStatus',
+	    value: function toggleStatus(task) {
+	      task.complete = !task.complete;
+	      this.$refreshList();
+	    }
+	  }, {
 	    key: 'notCompletedCount',
 	    value: function notCompletedCount() {
-	      return this.todos.filter(function (item) {
+	      return this.list.filter(function (item) {
 	        return !item.complete;
 	      }).length;
 	    }
 	  }, {
 	    key: 'completedCount',
 	    value: function completedCount() {
-	      return this.todos.filter(function (item) {
+	      return this.list.filter(function (item) {
 	        return item.complete;
 	      }).length;
 	    }
 	  }, {
 	    key: 'remove',
 	    value: function remove(item) {
-	      this.todos = this.todos.filter(function (todo) {
+	      this.list = this.list.filter(function (todo) {
 	        return todo !== item;
 	      });
 	      this.$refreshList();
@@ -837,7 +863,7 @@ webpackJsonp([0],[
 	  }, {
 	    key: 'clearCompleted',
 	    value: function clearCompleted() {
-	      this.todos = this.todos.filter(function (todo) {
+	      this.list = this.list.filter(function (todo) {
 	        return !todo.complete;
 	      });
 	      this.$refreshList();
@@ -849,7 +875,7 @@ webpackJsonp([0],[
 	      var showAll = 'all' === filterState;
 	      var showCompleted = 'completed' === filterState;
 	
-	      this.list = this.todos.filter(function (item) {
+	      this.filteredList = this.list.filter(function (item) {
 	        return showAll || showCompleted === item.complete;
 	      });
 	    }
@@ -890,7 +916,7 @@ webpackJsonp([0],[
 	module.exports = exports['default'];
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -1006,49 +1032,77 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 22 */,
-/* 23 */
+/* 23 */,
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
+	Object.defineProperty(exports, '__esModule', {
 	  value: true
 	});
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
-	__webpack_require__(24);
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	var TodoAppController = function TodoAppController(todoManager) {
-	  "ngInject";
+	__webpack_require__(25);
 	
-	  _classCallCheck(this, TodoAppController);
+	var TodoAppController = (function () {
+	  TodoAppController.$inject = ["todoManager"];
+	  function TodoAppController(todoManager) {
+	    "ngInject";
 	
-	  this.todos = todoManager;
-	};
-	TodoAppController.$inject = ["todoManager"];
+	    _classCallCheck(this, TodoAppController);
 	
-	exports["default"] = {
-	  template: "\n      <section class=\"todoapp\">\n        <todo-header todos=\"app.todos\"></todo-header>\n        <todo-list todos=\"app.todos\"></todo-list>\n        <todo-footer ng-if=\"app.todos.todos.length\" todos=\"app.todos\"></todo-footer>\n      </section>\n  ",
+	    this.todos = todoManager;
+	    this.filterState = 'all';
+	  }
+	
+	  _createClass(TodoAppController, [{
+	    key: 'addTask',
+	    value: function addTask(task) {
+	      if (!task) return;
+	
+	      this.todos.add(task);
+	    }
+	  }, {
+	    key: 'filter',
+	    value: function filter(state) {
+	      console.log('filter', state);
+	      this.todos.filter(state);
+	      this.filterState = state;
+	    }
+	  }, {
+	    key: 'toggleAll',
+	    value: function toggleAll() {
+	      this.todos.toggleAll();
+	    }
+	  }]);
+	
+	  return TodoAppController;
+	})();
+	
+	exports['default'] = {
+	  template: '\n    <section class="todoapp">\n      <section class="header">\n        <h1>todos</h1>\n        <header class="header-input">\n          <todo-text-input\n            placeholder="What needs to get done?"\n            on-save="app.addTask(task)">\n          </todo-text-input>\n        </header>\n      </section>\n      <section class="main">\n        <todo-batch-toggle on-toggle="app.toggleAll()" todos="app.todos.list" ng-if="app.todos.list.length"></todo-batch-toggle>\n        <todo-list todos="app.todos.filteredList"></todo-list>\n      </section>\n      <todo-footer ng-if="app.todos.list.length" todos="app.todos">\n        <todo-list-filter on-filter="app.filter(state)" filter-state="app.filterState"></todo-list-filter>\n      </todo-footer>\n    </section>\n  ',
 	  controller: TodoAppController
 	};
-	module.exports = exports["default"];
+	module.exports = exports['default'];
 
 /***/ },
-/* 24 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(25);
+	var content = __webpack_require__(26);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(11)(content, {});
@@ -1068,7 +1122,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(10)();
