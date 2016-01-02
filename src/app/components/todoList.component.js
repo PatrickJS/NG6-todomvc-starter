@@ -25,18 +25,9 @@ export default {
     todos: '='
   },
   template: `
-     <section class="main">
-      <input class="toggle-all"
-             type="checkbox"
-             ng-model="todoList.allChecked"
-             ng-model-options="{getterSetter: true}"
-             ng-change="todoList.toggleCompleteAll()"
-             ng-show="todoList.todos.list.length" />
-      <label for="toggle-all">Mark all as complete</label>
-      <ul class="todo-list">
-        <todo-item todo="todo" ng-repeat="todo in todoList.todos.list"></todo-item>
-      </ul>
-    </section>
+    <ul class="todo-list">
+      <todo-item todo="todo" ng-repeat="todo in todoList.todos.list"></todo-item>
+    </ul>
   `,
   controller: TodoListController
 }

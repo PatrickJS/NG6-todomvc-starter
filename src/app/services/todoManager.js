@@ -20,7 +20,7 @@ export default class TodoManager {
   toggleAll() {
     const complete = this.notCompletedCount() !== 0;
     this.todos = this.todos.map((task) => {
-      task.complete = !!complete;
+      task.complete = complete;
 
       return task;
     });
