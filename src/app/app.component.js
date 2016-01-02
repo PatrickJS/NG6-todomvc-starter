@@ -4,12 +4,19 @@ class TodoAppController {
   constructor(todoManager) {
     "ngInject";
     this.todos = todoManager;
+    this.filterState = 'all';
   }
 
   addTask(task) {
     if (!task) return;
 
     this.todos.add(task);
+  }
+
+  filter(state) {
+    console.log('filter', state);
+    this.todos.filter(state);
+    this.filterState = state;
   }
 
   toggleAll() {
@@ -30,10 +37,12 @@ export default {
         </header>
       </section>
       <section class="main">
-        <todo-batch-toggle on-toggle="app.toggleAll()" todos="app.todos.todos" ng-if="app.todos.todos.length"></todo-batch-toggle>
-        <todo-list todos="app.todos"></todo-list>
+        <todo-batch-toggle on-toggle="app.toggleAll()" todos="app.todos.list" ng-if="app.todos.list.length"></todo-batch-toggle>
+        <todo-list todos="app.todos.filteredList"></todo-list>
       </section>
-      <todo-footer ng-if="app.todos.todos.length" todos="app.todos"></todo-footer>
+      <todo-footer ng-if="app.todos.list.length" todos="app.todos">
+        <todo-list-filter on-filter="app.filter(state)" filter-state="app.filterState"></todo-list-filter>
+      </todo-footer>
     </section>
   `,
   controller: TodoAppController

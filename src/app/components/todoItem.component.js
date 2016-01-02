@@ -18,6 +18,18 @@ class TodoItemController {
 
     this.isEditing = false;
   }
+
+  toggleStatus() {
+    this.manager.toggleStatus(this.task);
+  }
+
+  get complete() {
+    return this.task.complete;
+  }
+
+  set complete(val) {
+    // do nothing
+  }
 }
 
 export default {
@@ -30,8 +42,9 @@ export default {
         <input
           class="toggle"
           type="checkbox"
-          ng-model="todoItem.task.complete"
-          ng-model-options="{getterSetter: true}">
+          ng-model="todoItem.complete"
+          ng-model-options="{getterSetter: true}"
+          ng-change="todoItem.toggleStatus()" />
         </input>
         <label ng-dblclick="todoItem.isEditing = true" class="todo-text" >{{todoItem.task.description}}</label>
         <button class="destroy" ng-click="todoItem.onDestroyClick()"></button>

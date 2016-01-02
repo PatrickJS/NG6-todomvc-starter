@@ -18,17 +18,17 @@ describe('TodoManager service', () => {
 
     it('can show all tasks', () => {
       manager.filter('all');
-      expect(manager.list.length).to.have.length.eq(2);
+      expect(manager.filteredList.length).to.have.length.eq(2);
     });
 
     it('can show pending tasks', () => {
       manager.filter('pending');
-      expect(manager.list.length).to.have.length.eq(1);
+      expect(manager.filteredList.length).to.have.length.eq(1);
     });
 
     it('can show completed tasks', () => {
       manager.filter('completed');
-      expect(manager.list.length).to.have.length.eq(1);
+      expect(manager.filteredList.length).to.have.length.eq(1);
     });
 
   });

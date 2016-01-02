@@ -23,11 +23,7 @@ export default {
       <span class="todo-count">
         {{todoFooter.todos.notCompletedCount()}} {{todoFooter.todos.notCompletedCount() == 1 ? 'todo' : 'todos'}} left
       </span>
-      <ul class="filters">
-        <li><a href ng-class="{selected: todoFooter.filterState == 'all'}" ng-click="todoFooter.filter('all')">All</a></li>
-        <li><a href ng-class="{selected: todoFooter.filterState == 'active'}" ng-click="todoFooter.filter('active')">Active</a></li>
-        <li><a href ng-class="{selected: todoFooter.filterState == 'completed'}" ng-click="todoFooter.filter('completed')">Completed</a></li>
-      </ul>
+      <ng-transclude></ng-transclude>
       <button
         class="clear-completed"
         ng-click="todoFooter.clearCompleted()"
