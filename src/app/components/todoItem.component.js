@@ -1,8 +1,9 @@
 
-class TodoItemController {
+export class TodoItemController {
   constructor(todoManager) {
     "ngInject";
     this.manager = todoManager;
+    this.isEditing = false;
   }
 
   onDestroyClick() {

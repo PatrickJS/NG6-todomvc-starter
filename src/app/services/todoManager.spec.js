@@ -2,10 +2,23 @@ import TodoManager from './todoManager';
 
 describe('TodoManager service', () => {
 
+  /** @type {TodoManager} */
   var manager;
 
   beforeEach(() => {
     manager = new TodoManager();
+  });
+
+  it('correctly handles stats', () => {
+    const first = manager.add('test 1');
+
+    expect(manager.notCompletedCount()).to.eq(1);
+    expect(manager.completedCount()).to.eq(0);
+
+    first.complete = true;
+
+    expect(manager.notCompletedCount()).to.eq(0);
+    expect(manager.completedCount()).to.eq(1);
   });
 
   describe('Filtering', () => {
@@ -33,24 +46,27 @@ describe('TodoManager service', () => {
 
   });
 
-  describe('Stats', () => {
-    let first;
+  describe('Toggle All', () => {
+    let first, second;
 
     beforeEach(() => {
-      first = manager.add('test 1');
+      first = manager.add('first');
+      second = manager.add('second');
+      second.complete = true;
     });
 
-    it('can show number of remaining tasks', () => {
+    it('makes all tasks complete if there is at least one incomplete task', () => {
       expect(manager.notCompletedCount()).to.eq(1);
-    });
-
-    it('shows zero if there is no pending tasks', () => {
-      first.complete = true;
+      manager.toggleAll();
       expect(manager.notCompletedCount()).to.eq(0);
     });
-  });
 
-  describe('Toggle', () => {
+    it('makes all tasks active if all tasks is complete', () => {
+      first.complete = true;
+      expect(manager.notCompletedCount()).to.eq(0);
+      manager.toggleAll();
+      expect(manager.notCompletedCount()).to.eq(2);
+    });
 
   });
 

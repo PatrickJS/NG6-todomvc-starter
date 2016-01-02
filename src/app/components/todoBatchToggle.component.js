@@ -1,5 +1,5 @@
 
-class BatchTogglerController {
+export class BatchTogglerController {
 
   get allChecked() {
     return this.todos.reduce((result, task) => result && task.complete, true);

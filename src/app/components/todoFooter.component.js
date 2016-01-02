@@ -3,12 +3,6 @@ class TodoFooterController {
   constructor(todoManager) {
     "ngInject";
     this.todos = todoManager;
-    this.filterState = 'all';
-  }
-
-  filter(state) {
-    this.filterState = state;
-    this.todos.filter(this.filterState);
   }
 
   clearCompleted() {

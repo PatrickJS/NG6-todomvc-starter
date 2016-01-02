@@ -6,7 +6,6 @@ export default class TodoManager {
   constructor() {
     this.filterState = 'all';
     this.filteredList = this.list = [];
-    this.showCompleted = undefined;
   }
 
   add(description) {
@@ -33,14 +32,6 @@ export default class TodoManager {
     this.$refreshList();
   }
 
-  notCompletedCount() {
-    return this.list.filter((item) => !item.complete).length;
-  }
-
-  completedCount() {
-    return this.list.filter((item) => item.complete).length;
-  }
-
   remove(item) {
     this.list = this.list.filter((todo) => todo !== item);
     this.$refreshList();
@@ -57,6 +48,14 @@ export default class TodoManager {
     const showCompleted = 'completed' === filterState;
 
     this.filteredList = this.list.filter((item) => (showAll || showCompleted === item.complete));
+  }
+
+  notCompletedCount() {
+    return this.list.filter((item) => !item.complete).length;
+  }
+
+  completedCount() {
+    return this.list.filter((item) => item.complete).length;
   }
 
   $refreshList() {
