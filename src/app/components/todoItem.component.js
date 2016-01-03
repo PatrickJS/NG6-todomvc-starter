@@ -24,10 +24,19 @@ export class TodoItemController {
     this.todoList.toggleStatus(this.task);
   }
 
+  /**
+   * This hack is needed due angular doesn't have one-way bindings (atleast for now)
+   * It allows not to override model value from inside this component.
+   *
+   * @returns {boolean}
+   */
   get complete() {
     return this.task.complete;
   }
 
+  /**
+   * @param {boolean} val
+   */
   set complete(val) {
     // do nothing
   }
