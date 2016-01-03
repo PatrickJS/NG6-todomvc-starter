@@ -2,11 +2,11 @@ import './app.less';
 
 export class TodoAppController {
   /**
-   * @param {TodoManager} todoManager
+   * @param {TodoList} todoList
    */
-  constructor(todoManager) {
+  constructor(todoList) {
     "ngInject";
-    this.todos = todoManager;
+    this.todos = todoList;
     this.filterState = 'all';
   }
 

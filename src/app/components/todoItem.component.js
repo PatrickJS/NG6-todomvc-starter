@@ -1,18 +1,18 @@
 
 export class TodoItemController {
-  constructor(todoManager) {
+  constructor(todoList) {
     "ngInject";
-    this.manager = todoManager;
+    this.todoList = todoList;
     this.isEditing = false;
   }
 
   onDestroyClick() {
-    this.manager.remove(this.task);
+    this.todoList.remove(this.task);
   }
 
   onSave(description) {
     if (!description) {
-      this.manager.remove(this.task);
+      this.todoList.remove(this.task);
     } else {
       this.task.description = description;
     }
@@ -21,7 +21,7 @@ export class TodoItemController {
   }
 
   toggleStatus() {
-    this.manager.toggleStatus(this.task);
+    this.todoList.toggleStatus(this.task);
   }
 
   get complete() {
