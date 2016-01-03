@@ -42,7 +42,22 @@ export default class TodoManager {
     this.$refreshList();
   }
 
-  filter(filterState) {
+  showCompleted() {
+    this.filterState = 'completed';
+    this.$filter();
+  }
+
+  showActive() {
+    this.filterState = 'active';
+    this.$filter();
+  }
+
+  showAll() {
+    this.filterState = 'all';
+    this.$filter();
+  }
+
+  $filter(filterState = this.filterState) {
     this.filterState = filterState;
     const showAll = ('all' === filterState);
     const showCompleted = 'completed' === filterState;
@@ -59,7 +74,7 @@ export default class TodoManager {
   }
 
   $refreshList() {
-    this.filter(this.filterState);
+    this.$filter();
   }
 
 }
