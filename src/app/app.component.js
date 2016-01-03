@@ -7,7 +7,6 @@ export class TodoAppController {
   constructor(todoList) {
     "ngInject";
     this.todos = todoList;
-    this.filterState = 'all';
   }
 
   onSave(task) {
@@ -52,7 +51,7 @@ export default {
         <todo-list todos="app.todos.filteredList"></todo-list>
       </section>
       <todo-footer ng-if="app.todos.list.length" todos="app.todos">
-        <todo-list-filter on-filter="app.onFilter(state)" filter-state="app.filterState"></todo-list-filter>
+        <todo-list-filter on-filter="app.onFilter(state)" filter-state="app.todos.filterState"></todo-list-filter>
       </todo-footer>
     </section>
   `,
