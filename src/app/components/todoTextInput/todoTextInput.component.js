@@ -27,12 +27,13 @@ export default {
     onSave: '&'
   },
   template: `
-    <form ng-submit="todoTextInput.save()">
-      <input  class="new-todo" autofocus=""
-              on-escape="todoTextInput.onEscape()"
-              ng-model="todoTextInput.text"
-              placeholder="{{todoTextInput.placeholder}}" />
+    <form ng-submit="vm.save()">
+      <input class="new-todo" autofocus=""
+             on-escape="vm.onEscape()"
+             ng-model="vm.text"
+             placeholder="{{vm.placeholder}}" />
     </form>
   `,
-  controller: TodoTextInputController
+  controller: TodoTextInputController,
+  controllerAs: 'vm'
 }

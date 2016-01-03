@@ -12,10 +12,11 @@ export default {
   },
   template: `
     <ul class="filters">
-      <li><a href ng-class="{selected: todoListFilter.filterState == 'all'}" ng-click="todoListFilter.filter('all')">All</a></li>
-      <li><a href ng-class="{selected: todoListFilter.filterState == 'active'}" ng-click="todoListFilter.filter('active')">Active</a></li>
-      <li><a href ng-class="{selected: todoListFilter.filterState == 'completed'}" ng-click="todoListFilter.filter('completed')">Completed</a></li>
+      <li><a href ng-class="{selected: vm.filterState == 'all'}" ng-click="vm.filter('all')">All</a></li>
+      <li><a href ng-class="{selected: vm.filterState == 'active'}" ng-click="vm.filter('active')">Active</a></li>
+      <li><a href ng-class="{selected: vm.filterState == 'completed'}" ng-click="vm.filter('completed')">Completed</a></li>
     </ul>
   `,
-  controller: TodoListFilter
+  controller: TodoListFilter,
+  controllerAs: 'vm'
 }

@@ -38,26 +38,27 @@ export default {
     task: '=todo'
   },
   template: `
-    <li ng-class="{'completed': todoItem.task.complete, 'editing': todoItem.isEditing}">
-      <div class="view" ng-show="!todoItem.isEditing">
+    <li ng-class="{'completed': vm.task.complete, 'editing': vm.isEditing}">
+      <div class="view" ng-show="!vm.isEditing">
         <input
           class="toggle"
           type="checkbox"
-          ng-model="todoItem.complete"
+          ng-model="vm.complete"
           ng-model-options="{getterSetter: true}"
-          ng-change="todoItem.toggleStatus()" />
+          ng-change="vm.toggleStatus()" />
         </input>
-        <label ng-dblclick="todoItem.isEditing = true" class="todo-text" >{{todoItem.task.description}}</label>
-        <button class="destroy" ng-click="todoItem.onDestroyClick()"></button>
+        <label ng-dblclick="vm.isEditing = true" class="todo-text" >{{vm.task.description}}</label>
+        <button class="destroy" ng-click="vm.onDestroyClick()"></button>
       </div>
-      <div class="edit-container" ng-if="todoItem.isEditing">
+      <div class="edit-container" ng-if="vm.isEditing">
         <todo-text-input
           class="edit"
-          on-save="todoItem.onSave(task)"
-          value="{{todoItem.task.description}}">
+          on-save="vm.onSave(task)"
+          value="{{vm.task.description}}">
         </todo-text-input>
       </div>
     </li>
   `,
-  controller: TodoItemController
+  controller: TodoItemController,
+  controllerAs: 'vm'
 }

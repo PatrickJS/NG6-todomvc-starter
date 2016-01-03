@@ -18,10 +18,11 @@ export default {
   template: `
     <input class="toggle-all"
            type="checkbox"
-           ng-model="todoBatchToggle.allChecked"
+           ng-model="vm.allChecked"
            ng-model-options="{getterSetter: true}"
-           ng-change="todoBatchToggle.onToggle()" />
+           ng-change="vm.onToggle()" />
     <label for="toggle-all">Mark all as complete</label>
   `,
-  controller: BatchTogglerController
+  controller: BatchTogglerController,
+  controllerAs: 'vm'
 }
