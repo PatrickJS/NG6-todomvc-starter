@@ -17,29 +17,29 @@ export default class TodoList {
   }
 
   toggleAll() {
-    const complete = this.notCompletedCount() !== 0;
+    const complete = this.countPending() !== 0;
     this.list = this.list.map((task) => {
       task.complete = !!complete;
 
       return task;
     });
 
-    this.$refreshList();
+    this.$filter();
   }
 
   toggleStatus(task) {
     task.complete = !task.complete;
-    this.$refreshList();
+    this.$filter();
   }
 
   remove(item) {
     this.list = this.list.filter((todo) => todo !== item);
-    this.$refreshList();
+    this.$filter();
   }
 
   clearCompleted() {
     this.list = this.list.filter((todo) => !todo.complete);
-    this.$refreshList();
+    this.$filter();
   }
 
   showCompleted() {
@@ -65,11 +65,11 @@ export default class TodoList {
     this.filteredList = this.list.filter((item) => (showAll || showCompleted === item.complete));
   }
 
-  notCompletedCount() {
+  countPending() {
     return this.list.filter((item) => !item.complete).length;
   }
 
-  completedCount() {
+  countCompleted() {
     return this.list.filter((item) => item.complete).length;
   }
 

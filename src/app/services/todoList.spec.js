@@ -12,13 +12,13 @@ describe('TodoList service', () => {
   it('correctly handles stats', () => {
     const first = todos.add('test 1');
 
-    expect(todos.notCompletedCount()).to.eq(1);
-    expect(todos.completedCount()).to.eq(0);
+    expect(todos.countPending()).to.eq(1);
+    expect(todos.countCompleted()).to.eq(0);
 
     first.complete = true;
 
-    expect(todos.notCompletedCount()).to.eq(0);
-    expect(todos.completedCount()).to.eq(1);
+    expect(todos.countPending()).to.eq(0);
+    expect(todos.countCompleted()).to.eq(1);
   });
 
   it('checks os todo list is empty or not', () => {
@@ -62,16 +62,16 @@ describe('TodoList service', () => {
     });
 
     it('makes all tasks complete if there is at least one incomplete task', () => {
-      expect(todos.notCompletedCount()).to.eq(1);
+      expect(todos.countPending()).to.eq(1);
       todos.toggleAll();
-      expect(todos.notCompletedCount()).to.eq(0);
+      expect(todos.countPending()).to.eq(0);
     });
 
     it('makes all tasks active if all tasks is complete', () => {
       first.complete = true;
-      expect(todos.notCompletedCount()).to.eq(0);
+      expect(todos.countPending()).to.eq(0);
       todos.toggleAll();
-      expect(todos.notCompletedCount()).to.eq(2);
+      expect(todos.countPending()).to.eq(2);
     });
 
   });
