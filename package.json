@@ -23,6 +23,7 @@
     "gulp": "^3.9.0",
     "gulp-rename": "^1.2.2",
     "gulp-util": "^3.0.7",
+    "html-webpack-plugin": "^1.7.0",
     "karma": "^0.13.9",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.2.0",
@@ -40,7 +41,10 @@
     "run-sequence": "^1.1.0",
     "sinon": "^1.17.2",
     "style-loader": "^0.12.2",
-    "webpack": "^1.9.5",
+    "supports-color": "^3.1.2",
+    "webpack": "^1.12.11",
+    "webpack-dev-middleware": "^1.4.0",
+    "webpack-hot-middleware": "^2.6.0",
     "yargs": "^3.9.0"
   },
   "scripts": {
