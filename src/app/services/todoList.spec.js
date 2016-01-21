@@ -21,6 +21,12 @@ describe('TodoList service', () => {
     expect(todos.completedCount()).to.eq(1);
   });
 
+  it('checks os todo list is empty or not', () => {
+    expect(todos.hasTasks()).to.be.false;
+    todos.add('test 1');
+    expect(todos.hasTasks()).to.be.true;
+  });
+
   describe('Filtering', () => {
 
     beforeEach(() => {

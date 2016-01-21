@@ -47,10 +47,12 @@ export default {
         </header>
       </section>
       <section class="main">
-        <todo-batch-toggle on-toggle="$ctrl.onToggleAll()" todos="$ctrl.todos.list" ng-if="$ctrl.todos.list.length"></todo-batch-toggle>
-        <todo-list todos="$ctrl.todos.filteredList"></todo-list>
+        <todo-batch-toggle on-toggle="$ctrl.onToggleAll()" todos="$ctrl.todos.list" ng-if="$ctrl.todos.hasTasks()"></todo-batch-toggle>
+        <div class="todo-list">
+          <todo-item todo="todo" ng-repeat="todo in $ctrl.todos.filteredList"></todo-item>
+        </div>
       </section>
-      <todo-footer ng-if="$ctrl.todos.list.length" todos="$ctrl.todos">
+      <todo-footer ng-if="$ctrl.todos.hasTasks()" todos="$ctrl.todos">
         <todo-list-filter on-filter="$ctrl.onFilter(state)" filter-state="$ctrl.todos.filterState"></todo-list-filter>
       </todo-footer>
     </section>

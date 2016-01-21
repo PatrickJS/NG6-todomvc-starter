@@ -73,6 +73,10 @@ export default class TodoList {
     return this.list.filter((item) => item.complete).length;
   }
 
+  hasTasks() {
+    return 0 !== this.list.length;
+  }
+
   $refreshList() {
     this.$filter();
   }
