@@ -21,8 +21,8 @@ Official [AngularJS website](http://angularjs.org/) is good place to start, but 
 
  - [Angular Styleguide](https://github.com/johnpapa/angular-styleguide) - This is basically angular best practices. There is some differences for ES2015 but the explanation of this practices remains the same.
  - [Optionated Angular Styleguide](https://github.com/toddmotto/angular-styleguide) - this is extended version of angular styleguide, which covers some other useful things, which may be useful for dev teams. 
- - The Top 5 Mistakes AngularJS Developers Make - This is a great series of posts describing in depth the common mistakes and how to not make them.
  - [Code Organization in Large AngularJS and JavaScript Applications](http://cliffmeyers.com/blog/2013/4/21/code-organization-angularjs-javascript) - This article explains directory structure, proposed in angular stylegude with more details and use cases.
+ - The Top 5 Mistakes AngularJS Developers Make - This is a great series of posts describing in depth the common mistakes and how to not make them.
    - [Heavy reliance on $scope (not using controller as) ](http://csharperimage.jeremylikness.com/2014/11/the-top-5-mistakes-angularjs-developers.html)
    - [Abusing $watch](http://csharperimage.jeremylikness.com/2014/11/the-top-5-mistakes-angularjs-developers_28.html)
    - [Overusing $broadcast and $emit](http://csharperimage.jeremylikness.com/2014/12/the-top-5-mistakes-angularjs-developers.html)
