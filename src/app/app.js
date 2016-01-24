@@ -11,3 +11,5 @@ angular.module('app', [
   services.name
 ])
 .component('app', AppComponent);
+
+angular.bootstrap(document.body, ['app'])
