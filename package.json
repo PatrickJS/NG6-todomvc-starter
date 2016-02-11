@@ -4,8 +4,7 @@
   "description": "Starter for Angular + ES6 + (Webpack or JSPM)",
   "main": "index.js",
   "dependencies": {
-    "angular": "^1.4.4",
-    "angular-component": "0.0.6",
+    "angular": "^1.5.0",
     "core-js": "^2.0.0",
     "cuid": "^1.3.8",
     "normalize.css": "^3.0.3",
