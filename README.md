@@ -1,7 +1,7 @@
 NG6-starter TodoMVC Example
 ============================
 
-This application is example of how you can write your angualr application using [NG6-starter](https://github.com/AngularClass/NG6-starter) as your starting point. Currently this example provides you:
+This application is example of how you can write your angular applications using [NG6-starter](https://github.com/AngularClass/NG6-starter) as your starting point. Currently this example provides you:
 
  - Example of small-sized application
  - UI components examples
@@ -19,9 +19,9 @@ If you have some other ideas of how improve this example, or you have questions,
 
 Official [AngularJS website](http://angularjs.org/) is good place to start, but it lacks of best practices and not provides you base concepts, which could simplify your life. There is some links that can help you better understand how to write maintainable applications using AngularJS. 
 
- - [Angular Styleguide](https://github.com/johnpapa/angular-styleguide) - This is basically angular best practices. There is some differences for ES2015 but the explanation of this practices remains the same.
- - [Optionated Angular Styleguide](https://github.com/toddmotto/angular-styleguide) - this is extended version of angular styleguide, which covers some other useful things, which may be useful for dev teams. 
- - [Code Organization in Large AngularJS and JavaScript Applications](http://cliffmeyers.com/blog/2013/4/21/code-organization-angularjs-javascript) - This article explains directory structure, proposed in angular stylegude with more details and use cases.
+ - [Angular Styleguide](https://github.com/johnpapa/angular-styleguide) - This is basically angular best practices. There are some differences for ES2015 but the explanation of these practices remains the same.
+ - [Optionated Angular Styleguide](https://github.com/toddmotto/angular-styleguide) - this is an extended version of angular styleguide, which covers additional information relevant to dev teams.
+ - [Code Organization in Large AngularJS and JavaScript Applications](http://cliffmeyers.com/blog/2013/4/21/code-organization-angularjs-javascript) - This article explains a directory structure, proposed in angular styleguide with more details and use cases.
  - The Top 5 Mistakes AngularJS Developers Make - This is a great series of posts describing in depth the common mistakes and how to not make them.
    - [Heavy reliance on $scope (not using controller as) ](http://csharperimage.jeremylikness.com/2014/11/the-top-5-mistakes-angularjs-developers.html)
    - [Abusing $watch](http://csharperimage.jeremylikness.com/2014/11/the-top-5-mistakes-angularjs-developers_28.html)
@@ -33,7 +33,7 @@ Official [AngularJS website](http://angularjs.org/) is good place to start, but 
  - [Exploring the Angular 1.5 `.component()` method](https://toddmotto.com/exploring-the-angular-1-5-component-method/)
  - [A Guide To Transclusion in AngularJS](http://teropa.info/blog/2015/06/09/transclusion.html)
 
-*If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/AngularClass/NG6-todomvc-starter/issues).*
+*If you have any others helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/AngularClass/NG6-todomvc-starter/issues).*
 
 ## Testing
 
