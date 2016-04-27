@@ -15,6 +15,7 @@ class TodoFooterController {
 
 export default {
   bindings: {},
+  transclude: true,
   template: `
     <footer class="footer">
       <span class="todo-count">
