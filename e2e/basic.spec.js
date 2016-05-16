@@ -1,4 +1,4 @@
-import HomePage from './page-objects/home.page';
+import HomePage from './pages/home';
 
 describe('Basic layout', () => {
   let homePage;
