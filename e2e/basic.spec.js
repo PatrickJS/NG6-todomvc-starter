@@ -18,5 +18,17 @@ describe('Basic layout', () => {
   it('should load with correct header', async () => {    
     const actualHeader = await homePage.getHeader();
     expect(actualHeader).toEqual('todos');
+  })
+  
+  describe('New item box', () => {
+    it('should be visible', async () => {
+      const isVisible = await homePage.newItemBox.isVisible();
+      expect(isVisible).toEqual(true);
+    })
+    
+    it('should have correct placeholder', async () => {
+      const actualPlaceholderText = await homePage.newItemBox.getPlaceholderText();
+      expect(actualPlaceholderText).toEqual('What needs to get done?');
+    });
   })  
 });
