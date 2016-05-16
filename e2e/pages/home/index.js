@@ -1,4 +1,5 @@
 import NewItemBox from './components/new-item-box';
+import ItemList from './components/item-list';
 
 class HomePage {
   constructor() {
@@ -8,10 +9,15 @@ class HomePage {
     this._headerElement = this._containerElement.element(by.css('h1'));
     
     this._newItemBox = new NewItemBox(this._containerElement);
+    this._itemList = new ItemList(this._containerElement);
   }
   
   get newItemBox() {
     return this._newItemBox;
+  }
+  
+  get itemList() {
+    return this._itemList;
   }
   
   load() {

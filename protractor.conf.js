@@ -4,7 +4,7 @@ exports.config = {
   baseUrl: 'http://localhost:3000',
   suites: {
     all: [
-      './e2e/basic.spec.js'
+      './e2e/initial-content.spec.js'
     ]
   },
   suite: 'all',
