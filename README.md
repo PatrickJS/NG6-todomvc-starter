@@ -7,11 +7,11 @@ This application is example of how you can write your angular applications using
  - UI components examples
  - Service example which includes unit tests
  - Unit tests for controllers of UI components
+ - Browser-driven end-to-end tests
  
 But there is still some things that should be done:
 
  - Improve test coverage
- - Provide example of E2E testing
  
 If you have some other ideas of how improve this example, or you have questions, please welcome to our [issue tracker](https://github.com/AngularClass/NG6-todomvc-starter/issues).
 
@@ -35,16 +35,17 @@ Official [AngularJS website](http://angularjs.org/) is good place to start, but 
 
 *If you have any others helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/AngularClass/NG6-todomvc-starter/issues).*
 
-## Testing
+## Unit testing
 
-The app uses [Karma](http://karma-runner.github.io/0.12/index.html) to run the tests, which you can find near the test target (`*.spec.js` files).
+The app uses [Karma](http://karma-runner.github.io/0.12/index.html) to run the unit tests, which you can find near the test target (`*.spec.js` files).
 
-## End-to-end tests
+## End-to-end testing
+
+The app uses [Protractor](https://github.com/angular/protractor), an end-to-end test framework designed for AngularJS apps, to the end-to-end tests, which you can find in the `e2e` folder.
 
 ### Setup development environment for running end-to-end tests
 
-We use [Protractor](https://angular.github.io/protractor/#/), an end-to-end test framework designed for AngularJS apps,
-from the command line, so first please install it globally:
+The app uses [Protractor](https://angular.github.io/protractor/#/) from the command line, so first please install it globally:
 
 `npm install -g protractor`
 
@@ -69,6 +70,7 @@ First, start the Selenium Server, and keep it running:
 `webdriver-manager start`
 
 Next, open another command prompt, and start the NG6-starter TodoMVC Example application, and keep it running:
+
 `gulp serve`
 
 Finally, open yet another command prompt, and execute the end-to-end tests:
