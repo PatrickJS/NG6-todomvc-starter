@@ -23,6 +23,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-util": "^3.0.7",
     "html-webpack-plugin": "^1.7.0",
+    "jasmine-spec-reporter": "^2.4.0",
     "karma": "^0.13.9",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.2.0",
@@ -47,7 +48,8 @@
     "yargs": "^3.9.0"
   },
   "scripts": {
-    "test": "karma start"
+    "test": "karma start",
+    "test:e2e": "protractor protractor.conf.js"
   },
   "keywords": [
     "angular",

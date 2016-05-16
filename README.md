@@ -38,3 +38,41 @@ Official [AngularJS website](http://angularjs.org/) is good place to start, but 
 ## Testing
 
 The app uses [Karma](http://karma-runner.github.io/0.12/index.html) to run the tests, which you can find near the test target (`*.spec.js` files).
+
+## End-to-end tests
+
+### Setup development environment for running end-to-end tests
+
+We use [Protractor](https://angular.github.io/protractor/#/), an end-to-end test framework designed for AngularJS apps,
+from the command line, so first please install it globally:
+
+`npm install -g protractor`
+
+It installs two command line tools, `protractor` and `webdriver-manager`, and you can use the `protractor --version` 
+command to verify the installation.
+
+Next, download the necessary binaries for Selenium Server:
+ 
+`webdriver-manager update`
+
+Finally, start Selenium Server:
+
+`webdriver-manager start`
+
+It will start Selenium Server on port 4444.
+
+
+### Running end-to-end tests
+
+First, start the Selenium Server, and keep it running:
+
+`webdriver-manager start`
+
+Next, open another command prompt, and start the NG6-starter TodoMVC Example application, and keep it running:
+`gulp serve`
+
+Finally, open yet another command prompt, and execute the end-to-end tests:
+
+`npm run test:e2e`
+
+Enjoy the report :)
