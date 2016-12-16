@@ -3,7 +3,7 @@ import {TodoItemController} from './todoItem.component';
 describe('Todo Item Component', () => {
 
   const task = {
-    description: 'Unchainged description',
+    description: 'Unchanged description',
     complete: false
   };
 
